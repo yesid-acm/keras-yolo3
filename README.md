@@ -8,7 +8,7 @@ Una implementacion desde Keras de Yolo v3 (Tensorflow backend) inspired by [alla
 
 ---
 
-#### Paquetes necesarios
+#### Librerias
 - Tensorflow
 - keras 
 - Numpy
@@ -75,24 +75,20 @@ Argumentos opcionales:
 
 2.  Asegurece que usted ejecutó `python convert.py -w yolov3.cfg yolov3.weights model_data/yolo_weights.h5`  
     En la carpeta model_data se genera el archivo de pesos convertido con nombre "yolo", por lo que se debe 
-    cambiar el nombre a "yolo_weights" con formato .h5, quedando en la ruta model_data/yolo_weights.h5. 
+    cambiar el nombre a "yolo_weights" con formato .h5, quedando en la ruta como model_data/yolo_weights.h5. 
     ésto es para cargar los pesos preentrenados.
     
- ## Algunas modificaciones realizadas para adaptar el modelo a nuestro objetivo de recorte de imágenes:
-   1. Se modifica los anchors con 9 opciones.
-   2. Se modefica las clases de la carpeta model_data.
-   
-
-3.  Modifique el script train.py e inicie el entreno
+ ### Algunas modificaciones realizadas para adaptar el modelo a nuestro objetivo de recorte de imágenes:
+ 1. Se modifica los anchors con 9 opciones.
+ 2. Se modefica las clases de la carpeta model_data.
+ 3.  Modificar a conveniencia el script train.py e inicie el entreno
     `python train.py`  
     Use sus pesos entrenados con la opción de comando `--model model_file` cuando use yolo_video.py
-     Recuerde modificar la ruta de la clase y el anchor con `--classes class_file` and `--anchors anchor_file`, respectivamente.
+    Recuerde modificar la ruta de la clase y el anchor con `--classes class_file` and `--anchors anchor_file`, respectivamente.
   
  #### Modificaciones del script train.py
-    * La función model.fit_generator() tiene capas congeladas y se modifica el epoch=1 y el initiial_epoch=0 (lineas 63 y 64).
-      Lo demás por defecto.
-    * La función model.fit_generator() tiene capas congeladas y se modifica el epoch=2 y el initiial_epoch=1 (lineas 82 y 83), 
-      Esta función es para cuando no se tiene buenos resultados, un entrenamiento más largo; lo demás 
+    * La función model.fit_generator() tiene capas congeladas y se modifica los epoch con: epoch=1 y el initiial_epoch=0 (lineas 63 y         64). Lo demás por defecto.
+    * La función model.fit_generator() tiene capas congeladas y se modifica los epoch con: epoch=2 y el initiial_epoch=1 (lineas 82 y         83), esta función es para cuando no se tiene buenos resultados, un entrenamiento más largo; lo demás 
       del script queda igual, Default.
 
 Si usted quiere usar los pesos (weights) preentrenados originales de YOLOv3, haga lo siguiente:
