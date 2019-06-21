@@ -2,13 +2,13 @@
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
-## Introduction
+## Introducción
 
-Una implementacion desde Keras de Yolo v3 (Tensorflow backend) inspired by [allanzelener/YAD2K](https://github.com/allanzelener/YAD2K).
+Una implementación desde Keras de Yolo v3 (Tensorflow backend) inspired by [allanzelener/YAD2K](https://github.com/allanzelener/YAD2K).
 
 ---
 
-#### Librerias
+#### Librerías
 - Tensorflow
 - keras 
 - Numpy
