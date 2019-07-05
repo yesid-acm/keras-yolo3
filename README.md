@@ -3,13 +3,16 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
 ## Introducción
+Para la arquitectura seleccionada, Yolov3, se realizó algunas modificaciones y se conservó la forma de ejecución del código 
+del repositorio original.
 
-Una implementación desde Keras de Yolo v3 (Tensorflow backend) inspired by [allanzelener/YAD2K](https://github.com/allanzelener/YAD2K).
+Una implementación desde Keras de Yolo v3 (Tensorflow backend) inspirada por [allanzelener/YAD2K](https://github.com/allanzelener/YAD2K).
+
 
 ---
 
 #### Librerías
-- Tensorflow
+- Tensorflow (si no se cuenta con gpu).
 - Tensoflow-gpu
 - keras 
 - Numpy
@@ -111,11 +114,11 @@ Si usted quiere usar los pesos (weights) preentrenados originales de YOLOv3, hag
 
 2. Se usan los anchors por defecto. si se cambian los anchors, probablemente se necesiten algunos cambios.
 
-5. Siempre cargue los pesos preentrenados y congele las capas en el primer stage del entrenamiento ó trate  de entrenar Darknet.
- 
-   Always load pretrained weights and freeze layers in the first stage of training. Or try Darknet training. Esto es por si hay algún      warning.
+5. Siempre cargue los pesos preentrenados y congele las capas en el primer stage del entrenamiento ó trate  de entrenar Darknet.Esto es    por si hay algún warning.
+
+4. MultiGPU uso: `--gpu_num N` para usar N GPUs. Esto es pasado a [Keras multi_gpu_model()](https://keras.io/utils/#multi_gpu_model).
 
 7. Para acelerar el proceso de entrenamiento con las capas congeladas se puede usar train_bottleneck.py, esto 
 calculará las caracteristicas del bottleneck  del primer modelo congelado y luego entrenará con las últimas capas.
 Esto hace que el entrenamiento en CPU tenga posiblemente un tiempo razonable. See [this](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html) for more information on bottleneck features.
-4. MultiGPU uso: `--gpu_num N` para usar N GPUs. Esto es pasado a [Keras multi_gpu_model()](https://keras.io/utils/#multi_gpu_model).
+
